@@ -4,7 +4,17 @@
 
 - Public: `https://abone-consulting.eu/`
 - Admin: `https://abone-consulting.eu/admin`
-- Stack: Vite SPA on Nginx VPS + Supabase cloud
+- Stack: Vite SPA (Vercel or Nginx VPS) + Supabase cloud
+
+## Vercel
+
+Root `vercel.json` handles:
+
+- Build from monorepo → `apps/web/dist`
+- SPA rewrite so refresh on `/admin`, `/kontakt`, etc. works
+- Legacy redirects (`/datechutz`, `/job-angebote/:slug`)
+
+Apache alternative: `apps/web/public/.htaccess` is copied into `dist` on build.
 
 ## Build
 

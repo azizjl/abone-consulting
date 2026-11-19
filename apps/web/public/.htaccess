@@ -1,0 +1,16 @@
+# Apache SPA fallback (if hosted on Apache instead of Vercel/Nginx)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Legacy redirects
+  RewriteRule ^datechutz/?$ /datenschutz [R=301,L]
+  RewriteRule ^job-angebote/(.*)$ /job-finden/$1 [R=301,L]
+
+  # Don't rewrite real files/folders
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+
+  # SPA fallback
+  RewriteRule ^ index.html [L]
+</IfModule>
