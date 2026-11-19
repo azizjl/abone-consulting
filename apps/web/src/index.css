@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Plus Jakarta Sans", "DM Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #0c1f1a;
+  --color-forest: #143028;
+  --color-muted: #5f6b66;
+  --color-lime: #d4ff5e;
+  --color-lime-deep: #b6e63a;
+  --color-surface: #ffffff;
+  --color-mist: #f4f5f3;
+  --color-cloud: #e9ece8;
+  --color-border: #dde2dd;
+  --color-navy: #0c1f1a;
+  --color-charcoal: #0a1713;
+  --color-ivory: #f4f5f3;
+  --color-cyan: #d4ff5e;
+  --color-indigo: #1f6b5b;
+  --color-success: #1f7a4c;
+  --color-danger: #b42318;
+  --color-warning: #b54708;
+
+  --shadow-soft: 0 20px 50px rgba(12, 31, 26, 0.08);
+  --shadow-card: 0 10px 30px rgba(12, 31, 26, 0.06);
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+    background: var(--color-surface);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.03em;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-lime) 45%, white);
+  }
+}
+
+@layer utilities {
+  .container-abone {
+    width: min(1200px, calc(100% - 2rem));
+    margin-inline: auto;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .gradient-brand {
+    background-image: linear-gradient(135deg, #d4ff5e 0%, #9fd92a 100%);
+  }
+
+  .gradient-hero {
+    background:
+      linear-gradient(120deg, rgba(8, 20, 16, 0.72) 0%, rgba(8, 20, 16, 0.45) 55%, rgba(8, 20, 16, 0.25) 100%);
+  }
+
+  .hero-photo {
+    background-image:
+      linear-gradient(115deg, rgba(8, 20, 16, 0.78) 0%, rgba(8, 20, 16, 0.42) 48%, rgba(8, 20, 16, 0.28) 100%),
+      url("/brand/office.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+
+  .glass-chip {
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    backdrop-filter: blur(14px);
+  }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    background: var(--color-mist);
+    color: var(--color-muted);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.45rem 0.85rem;
+  }
+}

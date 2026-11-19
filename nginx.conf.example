@@ -1,0 +1,32 @@
+server {
+    listen 80;
+    server_name abone-consulting.eu www.abone-consulting.eu;
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl http2;
+    server_name abone-consulting.eu www.abone-consulting.eu;
+
+    # Replace with valid certificates for abone-consulting.eu
+    ssl_certificate     /etc/letsencrypt/live/abone-consulting.eu/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/abone-consulting.eu/privkey.pem;
+
+    root /var/www/abone-consulting/current;
+    index index.html;
+
+    # Legacy redirects
+    rewrite ^/datechutz/?$ /datenschutz permanent;
+    rewrite ^/job-angebote/(.*)$ /job-finden/$1 permanent;
+
+    location /assets/ {
+        try_files $uri =404;
+        access_log off;
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}
