@@ -8,11 +8,20 @@
 
 ## Vercel
 
-Root `vercel.json` handles:
+**Recommended Project Settings**
 
-- Build from monorepo → `apps/web/dist`
-- SPA rewrite so refresh on `/admin`, `/kontakt`, etc. works
-- Legacy redirects (`/datechutz`, `/job-angebote/:slug`)
+1. **Root Directory:** `apps/web`
+2. **Framework Preset:** Vite
+3. **Build Command:** `npm run build` (default)
+4. **Output Directory:** `dist` (default — leave as-is)
+5. **Install Command:** `npm install`
+
+If Root Directory stays the repository root instead, use the root `vercel.json` which builds with `npm run build -w web` and sets Output Directory to `apps/web/dist`.
+
+SPA rewrites + legacy redirects live in:
+
+- `apps/web/vercel.json` (when Root Directory = `apps/web`)
+- `vercel.json` (when deploying from repo root)
 
 Apache alternative: `apps/web/public/.htaccess` is copied into `dist` on build.
 
