@@ -9,6 +9,8 @@ export const company = {
   phoneDe: '+49 176 84648096',
   phonePl: '+48 603 811 279',
   phoneDisplay: '+48 603 811 279',
+  whatsapp: '+49 176 70690447',
+  whatsappDigits: '4917670690447',
   address: {
     street: 'ul. Rynek 11',
     city: '47-200 Kędzierzyn-Koźle',
